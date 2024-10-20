@@ -1,4 +1,4 @@
-use("icc")
+use("lucifer")
 
 // db.getCollection("products").find({
 //     $and: [
@@ -29,6 +29,13 @@ use("icc")
 //         $regex: '^A'
 //     }
 // })
+
+// db.getCollection("users").find();
+
+// db.getCollection("users").find( { $where: function() {
+//     return (this.username == "Rahul")
+// }});
+
 
 
 
@@ -66,3 +73,15 @@ use("icc")
 // db.getCollection("products").find({
 //     "price": { $ne: 200 }
 // })
+
+
+// db.getCollection("products").find({
+//     $and: [{rating:{$gte:2}},{rating:{$lte:3}}]
+// })
+
+
+db.getCollection("products").find({
+    $where: function(){
+        return this.rating <= 3 && this.rating >= 0
+    }
+})
